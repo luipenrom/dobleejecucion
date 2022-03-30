@@ -1,0 +1,40 @@
+Index: src/DibujoCartesianas.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import javax.swing.JFrame;\r\nimport java.awt.*;\r\nimport java.awt.event.ComponentEvent;\r\nimport java.awt.event.ComponentListener;\r\nimport java.lang.reflect.Method;\r\n\r\npublic class DibujoCartesianas {\r\n\r\n       private static Color devuelveColor(double x, double y) {\r\n        if (x < 0.23) {\r\n            return new Color(5, 11, 198);\r\n        }\r\n\r\n        if (y < 0.22 && y > 0.11) {\r\n            return new Color(198, 11, 30);\r\n        }\r\n        if (y < 0.44 && y > 0.33) {\r\n            return new Color(198, 11, 30);\r\n        }\r\n        if (y < 0.66 && y > 0.55) {\r\n            return new Color(198, 11, 30);\r\n        }\r\n        if (y < 0.88 && y > 0.77) {\r\n            return new Color(198, 11, 30);\r\n        }\r\n        return new Color(247, 244, 30);\r\n    }\r\n\r\n\r\n    //NO MODIFICAR A PARTIR DE AQUÍ\r\n\r\n    public static int ANCHO = 400;\r\n    public static int ALTO = 400;\r\n    public static int diagonal = (int) Math.sqrt(ANCHO * ANCHO + ALTO * ALTO);\r\n\r\n    public static void repinta(Canvas cnvs) {\r\n        Graphics g = cnvs.getGraphics();\r\n        Dimension dimension = cnvs.getSize();\r\n        ANCHO = dimension.width;\r\n        ALTO = dimension.height;\r\n        for (int x = 0; x < ANCHO; x++) {\r\n            for (int y = 0; y < ALTO; y++) {\r\n                Color color = devuelveColor(x / (double) ANCHO, y / (double) ALTO);\r\n                g.setColor(color);\r\n                g.drawOval(x, y, 1, 1);\r\n            }\r\n        }\r\n    }\r\n\r\n    public static void main(String[] args) {\r\n        JFrame frmMain = new JFrame();\r\n        frmMain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);\r\n        frmMain.setSize(ANCHO, ALTO + 50);\r\n\r\n        final Canvas cnvs = new Canvas();\r\n        cnvs.setSize(ANCHO, ALTO);\r\n\r\n        frmMain.addComponentListener(new ComponentListener() {\r\n            @Override\r\n            public void componentResized(ComponentEvent componentEvent) {\r\n                Component c = (Component) componentEvent.getSource();\r\n                repinta(cnvs);\r\n            }\r\n\r\n            @Override\r\n            public void componentMoved(ComponentEvent componentEvent) {\r\n                Component c = (Component) componentEvent.getSource();\r\n                repinta(cnvs);\r\n            }\r\n\r\n            @Override\r\n            public void componentShown(ComponentEvent componentEvent) {\r\n                repinta(cnvs);\r\n            }\r\n\r\n            @Override\r\n            public void componentHidden(ComponentEvent componentEvent) {\r\n            }\r\n        });\r\n        frmMain.add(cnvs);\r\n        frmMain.setVisible(true);\r\n        repinta(cnvs);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/DibujoCartesianas.java b/src/DibujoCartesianas.java
+--- a/src/DibujoCartesianas.java	
++++ b/src/DibujoCartesianas.java	
+@@ -7,25 +7,11 @@
+ public class DibujoCartesianas {
+ 
+        private static Color devuelveColor(double x, double y) {
+-        if (x < 0.23) {
+-            return new Color(5, 11, 198);
+-        }
++        if (y < 0.76 && y > 0.24) {
++            return new Color(255, 255, 255);}
++        return new Color(5, 11, 198);
++    }
+ 
+-        if (y < 0.22 && y > 0.11) {
+-            return new Color(198, 11, 30);
+-        }
+-        if (y < 0.44 && y > 0.33) {
+-            return new Color(198, 11, 30);
+-        }
+-        if (y < 0.66 && y > 0.55) {
+-            return new Color(198, 11, 30);
+-        }
+-        if (y < 0.88 && y > 0.77) {
+-            return new Color(198, 11, 30);
+-        }
+-        return new Color(247, 244, 30);
+-    }
+-
+ 
+     //NO MODIFICAR A PARTIR DE AQUÍ
+ 
